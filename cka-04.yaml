@@ -16,4 +16,4 @@ spec:
         image: nginx
     metadata:
       labels:
-        tier: my_web_rs-04
+        app: my_web_rs-04
