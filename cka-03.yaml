@@ -24,6 +24,7 @@ spec:
   - protocol: TCP
     port: 8002
     targetPort: 80
+    nodePort: 30002
   selector:
     app: my_web_LB
 status:
