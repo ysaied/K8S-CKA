@@ -27,7 +27,7 @@ spec:
     nodePort: 30002
   selector:
     app: my_web_LB
-status:
-  loadBalancer:
-    ingress:
-    - ip: 192.3.0.2
+#status:
+#  loadBalancer:
+#    ingress:
+#    - ip: 192.3.0.2
