@@ -1,10 +1,10 @@
-# Create Pod + NodePort Service -- use App Label to bind the pod and service
+# Create Pod + ClusterIP Service -- use App Label to bind the pod and service
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-nginx-00
+  name: pod-nginx-01
   labels:
-    app: my_web
+    app: my_web_ClusterIP
 spec:
   containers:
   - name: nginx
@@ -15,12 +15,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: srv-nginx-0
+  name: srv-nginx-1
 spec:
-  type: NodePort
+  type: CluserIP
+  ClusterIP: 172.16.0.1
   ports:
   - protocol: TCP
-    port: 8000
+    port: 8001
     targetPort: 80
   selector:
-    app: my_web
+    app: my_web_ClusterIP
