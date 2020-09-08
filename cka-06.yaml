@@ -16,8 +16,6 @@ spec:
       containers:
       - name: nginx
         image: nginx
-      - name: mysql
-        image: mysql
     metadata:
       labels:
         app: my_web_rs-06
