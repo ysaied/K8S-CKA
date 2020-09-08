@@ -1,0 +1,32 @@
+# Create Pod + Load-balancer Service -- use App Label to bind the pod and service
+#service#2
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-nginx-02
+  labels:
+    app: my_web_LB
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srv-nginx-2
+spec:
+  type: LoadBalancer
+  clusterIP: 10.96.1.2
+  ports:
+  - protocol: TCP
+    port: 8002
+    targetPort: 80
+  selector:
+    app: my_web_LB
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.3.0.2
