@@ -18,7 +18,7 @@ metadata:
   name: srv-nginx-1
 spec:
   type: CluserIP
-  ClusterIP: 172.16.0.1
+  clusterIP: 172.16.0.1
   ports:
   - protocol: TCP
     port: 8001
