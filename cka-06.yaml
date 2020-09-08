@@ -1,7 +1,7 @@
 # Create Replica Set
 #rs#5
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
   name: rs-nginx-06
   labels:
