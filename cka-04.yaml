@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs-nginx-04
+  labels:
+    app: my_web_rs-04
+spec:
+  replicas: 3
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
