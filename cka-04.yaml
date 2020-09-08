@@ -6,8 +6,8 @@ metadata:
     app: my_web_rs-04
 spec:
   replicas: 3
-    matchLabels:
-      app: my_web_rs-04
+  matchLabels:
+    app: my_web_rs-04
   template:
     spec:
       containers:
