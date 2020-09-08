@@ -1,0 +1,23 @@
+# Create Replica Set
+#rs#5
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs-nginx-06
+  labels:
+    app: my_web_rs-06
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      app: my_web_rs-06
+  template:
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+      - name: mysql
+        image: mysql
+    metadata:
+      labels:
+        app: my_web_rs-06
