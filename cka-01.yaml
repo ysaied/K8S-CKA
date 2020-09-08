@@ -22,5 +22,6 @@ spec:
   - protocol: TCP
     port: 8000
     targetPort: 80
+    nodePort: 8000
   selector:
     app: my_web
