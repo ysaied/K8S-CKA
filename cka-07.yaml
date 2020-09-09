@@ -7,8 +7,8 @@ metadata:
 spec:
   rules:
   - http:
-      paths:
-      - path: 
+      paths: 
+      - path: / 
         pathType: Prefix
         backend:
           service:
