@@ -11,8 +11,10 @@ spec:
       - path: / 
         pathType: Prefix
         backend:
-          serviceName: srv-nginx-7
-          servicePort: 8007
+          service: 
+            name: srv-nginx-7
+            port: 
+              number: 8007
 ---
 apiVersion: v1
 kind: Service
