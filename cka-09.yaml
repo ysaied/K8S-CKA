@@ -8,12 +8,14 @@ spec:
     http:
       paths:
       - path: /tea
+        pathType: Prefix
         backend:
           service:
             name: srv-cafe-tea-9
             port: 
               number: 8009
       - path: /coffee
+        pathType: Prefix
         backend:
           service:
             name: srv-cafe-coffe-9
