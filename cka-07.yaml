@@ -33,14 +33,14 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-nginx-07
+  name: dep-nginx-7
   labels:
-    app: nginx-07
+    app: nginx-7
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: nginx-07
+      app: nginx-7
   template:
     spec:
       containers:
@@ -48,4 +48,4 @@ spec:
         image: nginx
     metadata:
       labels:
-        app: nginx-07
+        app: nginx-7
