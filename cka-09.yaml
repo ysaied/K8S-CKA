@@ -4,7 +4,7 @@ metadata:
   name: ing-cafe-9
 spec:
   rules:
-  - host: cafe.com
+  - host: cafe.lab.ae
     http:
       paths:
       - path: /tea
