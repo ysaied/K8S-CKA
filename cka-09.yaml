@@ -9,12 +9,16 @@ spec:
       paths:
       - path: /tea
         backend:
-          serviceName: srv-cafe_tea-9
-          servicePort: 8009
+          service:
+            name: srv-cafe_tea-9
+            port: 
+              number: 8009
       - path: /coffee
         backend:
-          serviceName: srv-cafe_coffe-9
-          servicePort: 8009
+          service:
+            name: srv-cafe_coffe-9
+            port: 
+              number: 8009
 ---
 apiVersion: v1
 kind: Service
