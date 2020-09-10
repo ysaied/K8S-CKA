@@ -21,14 +21,15 @@ spec:
           - example-node
 
 ---
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
   name: pvc-10
 spec:
   accessModes:
   - ReadWriteOnce
   storageClassName: local-storage
+  persistentVolumeReclaimPolicy: Delete
   resources:
     requests:
       storage: 50Mi
