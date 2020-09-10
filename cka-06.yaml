@@ -33,7 +33,7 @@ spec:
   - 192.3.0.6
   ports:
   - protocol: TCP
-    port: 8006
+    port: 80
     targetPort: 80
     nodePort: 30006
   selector:
