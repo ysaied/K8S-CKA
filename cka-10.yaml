@@ -19,7 +19,8 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - example-node
+          - k8s-01
+          - k8s-02
 
 ---
 apiVersion: v1
