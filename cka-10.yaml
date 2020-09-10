@@ -11,7 +11,7 @@ spec:
   storageClassName: local-storage
   persistentVolumeReclaimPolicy: Delete
   local:
-    path: /mnt/disks/pv-10
+    path: /home/ysaied/pv-10
   nodeAffinity:
     required:
       nodeSelectorTerms:
