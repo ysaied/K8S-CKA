@@ -1,46 +1,15 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ing-nginx-7
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  rules:
-  - http:
-      paths: 
-      - path: / 
-        pathType: Prefix
-        backend:
-          service: 
-            name: srv-nginx-7
-            port: 
-              number: 8007
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: srv-nginx-7
-spec:
-  type: NodePort
-  ports:
-  - protocol: TCP
-    port: 8007
-    targetPort: 80
-    nodePort: 30007
-  selector:
-    app: nginx-7
----
+# Network LB service using MetaLB --- 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-nginx-7
+  name: dep-07
   labels:
-    app: nginx-7
+    app: app-07
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
-      app: nginx-7
+      app: app-07
   template:
     spec:
       containers:
@@ -48,4 +17,22 @@ spec:
         image: nginx
     metadata:
       labels:
-        app: nginx-7
+        app: app-07
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srv-07
+spec:
+  type: LoadBalancer
+  clusterIP: 10.96.1.7
+# external ip tested and works fine
+#  externalIPs:
+#  - 192.3.0.6
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30007
+  selector:
+    app: app-07
