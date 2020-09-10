@@ -9,7 +9,7 @@ volumeBindingMode: WaitForFirstConsumer
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: app-101 
+  name: pvc-101 
 spec:
   storageClassName: local-storage
   resources:
@@ -17,3 +17,25 @@ spec:
       storage: 100Mi
   accessModes:
     - ReadWriteOnce
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pd-nginx-101
+  labels:
+    app: app-101
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - mountPath: /data
+      name: pv-101
+  volumes:
+  - name: pv-101
+    presistentVolumeClaim:
+      claimName: pvc-101
+      
