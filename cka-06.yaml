@@ -17,7 +17,8 @@ spec:
       - name: nginx
         image: nginx
     metadata:
-      name: pod-06
+#      name: pod-06
+# Tested, pod names came from Deployment name above
       labels:
         app: app-06
 ---
