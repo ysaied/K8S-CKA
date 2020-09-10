@@ -20,7 +20,6 @@ spec:
           operator: In
           values:
           - k8s-01
-          - k8s-02
 
 ---
 apiVersion: v1
