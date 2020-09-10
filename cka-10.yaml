@@ -19,3 +19,36 @@ spec:
           operator: In
           values:
           - example-node
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-10
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 50Mi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pd-10
+  labels:
+    app: app-10
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - mountPath: /data
+      name: pv-10
+  volumes:
+  - name: pv-10
+    persistentVolumeClaim:
+      claimName: pvc-10
