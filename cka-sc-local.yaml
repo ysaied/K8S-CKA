@@ -3,42 +3,8 @@ kind: StorageClass
 metadata:
   name: local-storage
 provisioner: kubernetes.io/no-provisioner
+#Binding modes "Immediate" or "WaitForFirstConsumer"
 volumeBindingMode: WaitForFirstConsumer
 #Reclaim policy can be "Delete" or "Retain"
 reclaimPolicy: Delete
 
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: pvc-101 
-spec:
-  storageClassName: local-storage
-  resources:
-    requests:
-      storage: 100Mi
-  accessModes:
-    - ReadWriteOnce
-
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: pd-nginx-101
-  labels:
-    app: app-101
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-    ports:
-    - containerPort: 80
-    volumeMounts:
-    - mountPath: /data
-      name: pv-101
-  volumes:
-  - name: pv-101
-    persistentVolumeClaim:
-      claimName: pvc-101
-      
