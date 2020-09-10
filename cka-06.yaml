@@ -17,6 +17,7 @@ spec:
       - name: nginx
         image: nginx
     metadata:
+      name: pod-06
       labels:
         app: app-06
 ---
