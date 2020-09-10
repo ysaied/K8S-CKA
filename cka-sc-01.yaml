@@ -36,6 +36,6 @@ spec:
       name: pv-101
   volumes:
   - name: pv-101
-    presistentVolumeClaim:
+    persistentVolumeClaim:
       claimName: pvc-101
       
