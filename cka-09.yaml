@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: in-9
+  name: in-09
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -13,21 +13,21 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: srv-9-1
+            name: srv-09-1
             port: 
               number: 80
       - path: /coffee
         pathType: Prefix
         backend:
           service:
-            name: srv-9-2
+            name: srv-09-2
             port: 
               number: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: srv-9-1
+  name: srv-09-1
   labels:
 spec:
   ports:
@@ -35,33 +35,33 @@ spec:
     targetPort: 80
     protocol: TCP
   selector:
-    app: app-9-1
+    app: app-09-1
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: srv-9-2
+  name: srv-09-2
 spec:
   ports:
   - port: 80
     targetPort: 80
     protocol: TCP
   selector:
-    app: app-9-2
+    app: app-09-2
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-9-1
+  name: dep-09-1
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: app-9-1
+      app: app-09-1
   template:
     metadata:
       labels:
-        app: app-9-1 
+        app: app-09-1 
     spec:
       containers:
       - name: nginx 
@@ -70,16 +70,16 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-9-2
+  name: dep-09-2
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: app-9-2
+      app: app-09-2
   template:
     metadata:
       labels:
-        app: app-9-2
+        app: app-09-2
     spec:
       containers:
       - name: nginx
