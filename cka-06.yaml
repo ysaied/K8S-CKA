@@ -29,8 +29,9 @@ metadata:
 spec:
   type: NodePort
   clusterIP: 10.96.1.6
-  externalIPs:
-  - 192.3.0.6
+# external ip tested and works fine
+#  externalIPs:
+#  - 192.3.0.6
   ports:
   - protocol: TCP
     port: 80
