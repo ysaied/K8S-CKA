@@ -1,58 +1,90 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ing-nginx-8
+  name: in-08
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
-      paths: 
-      - path: / 
+  - host: in8.lab.ae
+    http:
+      paths:
+      - path: /tea
         pathType: Prefix
         backend:
-          service: 
-            name: srv-nginx-8
+          service:
+            name: srv-08-1
             port: 
-              number: 8008
-      - path: /ysaied
+              number: 80
+      - path: /coffee
         pathType: Prefix
         backend:
-          service: 
-            name: srv-nginx-8
+          service:
+            name: srv-08-2
             port: 
-              number: 8008
+              number: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: srv-nginx-8
+  name: srv-08-1
+  labels:
 spec:
-  type: NodePort
+  type: LoadBalancer
+  clusterIP: 10.96.1.81
   ports:
-  - protocol: TCP
-    port: 8008
+  - port: 80
     targetPort: 80
-    nodePort: 30008
+    protocol: TCP
   selector:
-    app: nginx-8
+    app: app-08-1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srv-08-2
+spec:
+  type: LoadBalancer
+  clusterIP: 10.96.1.82
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: app-08-2
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-nginx-8
-  labels:
-    app: nginx-8
+  name: dep-08-1
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
-      app: nginx-8
+      app: app-08-1
   template:
+    metadata:
+      labels:
+        app: app-08-1 
+    spec:
+      containers:
+      - name: nginx 
+        image: nginx
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-08-2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-08-2
+  template:
+    metadata:
+      labels:
+        app: app-08-2
     spec:
       containers:
       - name: nginx
         image: nginx
-    metadata:
-      labels:
-        app: nginx-8
