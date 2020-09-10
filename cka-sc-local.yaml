@@ -4,6 +4,9 @@ metadata:
   name: local-storage
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
+#Reclaim policy can be "Delete" or "Retain"
+reclaimPolicy: Delete
+
 
 ---
 apiVersion: v1
