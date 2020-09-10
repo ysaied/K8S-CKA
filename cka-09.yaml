@@ -30,6 +30,8 @@ metadata:
   name: srv-09-1
   labels:
 spec:
+  type: LoadBalancer
+  clusterIP: 10.96.1.91
   ports:
   - port: 80
     targetPort: 80
@@ -43,6 +45,8 @@ metadata:
   name: srv-09-2
 spec:
   ports:
+  type: LoadBalancer
+  clusterIP: 10.96.1.92
   - port: 80
     targetPort: 80
     protocol: TCP
