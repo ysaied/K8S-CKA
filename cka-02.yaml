@@ -20,6 +20,8 @@ metadata:
 spec:
   type: ClusterIP
   clusterIP: 10.96.1.1
+  externalIPs:
+  - 192.3.0.1
   ports:
   - protocol: TCP
     port: 8001
