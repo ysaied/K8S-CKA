@@ -32,7 +32,7 @@ metadata:
   name: srv-09-1
   labels:
 spec:
-  type: LoadBalancer
+#  type: LoadBalancer
   clusterIP: 10.96.1.91
   ports:
   - port: 80
@@ -46,7 +46,7 @@ kind: Service
 metadata:
   name: srv-09-2
 spec:
-  type: LoadBalancer
+#  type: LoadBalancer
   clusterIP: 10.96.1.92
   ports:
   - port: 80
