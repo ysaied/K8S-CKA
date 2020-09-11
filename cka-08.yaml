@@ -11,14 +11,14 @@ spec:
   - host: in8.lab.ae
     http:
       paths:
-      - path: /tea
+      - path: /81
         pathType: Prefix
         backend:
           service:
             name: srv-08-1
             port: 
               number: 80
-      - path: /coffee
+      - path: /82
         pathType: Prefix
         backend:
           service:
