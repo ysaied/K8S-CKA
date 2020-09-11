@@ -13,8 +13,8 @@ spec:
   - host: in121.lab.ae
     http:
       paths:
-#      - path: /
-#        pathType: Prefix
+      - path: /
+        pathType: Prefix
         backend:
           service:
             name: srv-12-1
@@ -23,8 +23,8 @@ spec:
   - host: in122.lab.ae
     http:
       paths:
-#      - path: /
-#        pathType: Prefix
+      - path: /
+        pathType: Prefix
         backend:
           service:
             name: srv-12-2
