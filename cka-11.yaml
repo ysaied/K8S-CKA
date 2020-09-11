@@ -4,9 +4,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: in-11
-#  annotations:
+  annotations:
 #    kubernetes.io/nginx
-#    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: in11.lab.ae
