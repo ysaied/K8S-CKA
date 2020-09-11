@@ -5,9 +5,7 @@ kind: Ingress
 metadata:
   name: in-12
   annotations:
-    kubernetes.io/ingress.class: "nginx"
-#    kubernetes.io/nginx
-#    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: in121.lab.ae
