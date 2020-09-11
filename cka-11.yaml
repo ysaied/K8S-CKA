@@ -11,14 +11,14 @@ spec:
   - host: in11.lab.ae
     http:
       paths:
-      - path: /tea
+      - path: /111
         pathType: Prefix
         backend:
           service:
             name: srv-11-1
             port: 
               number: 80
-      - path: /coffee
+      - path: /112
         pathType: Prefix
         backend:
           service:
