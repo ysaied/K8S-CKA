@@ -43,7 +43,6 @@ metadata:
 data:
   index.html: |
     <!DOCTYPE html><html><body><h1>CKA-08-2</h1></body></html>
-
 ---
 apiVersion: v1
 kind: Service
