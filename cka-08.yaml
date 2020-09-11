@@ -25,6 +25,25 @@ spec:
             name: srv-08-2
             port: 
               number: 80
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: map-08-1
+data:
+  index.html: |
+    <!DOCTYPE html><html><body><h1>CKA-08-1</h1></body></html>
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: map-08-2
+data:
+  index.html: |
+    <!DOCTYPE html><html><body><h1>CKA-08-1</h1></body></html>
+
 ---
 apiVersion: v1
 kind: Service
@@ -72,6 +91,13 @@ spec:
       containers:
       - name: nginx 
         image: nginx
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html/
+    volumes:
+    - name: html
+      configMap:
+        name: map-08-1
 ---
 apiVersion: apps/v1
 kind: Deployment
