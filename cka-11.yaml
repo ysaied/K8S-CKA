@@ -5,7 +5,7 @@ kind: Ingress
 metadata:
   name: in-11
   annotations:
-    kubernetes.io/ingress.nginx
+    kubernetes.io/nginx
 #    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
