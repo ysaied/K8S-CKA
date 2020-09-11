@@ -283,6 +283,7 @@ metadata:
   namespace: ingress-nginx
 spec:
   type: LoadBalancer
+  externalTrafficPolicy: Local
   ports:
     - name: http
       port: 80
@@ -337,6 +338,7 @@ spec:
                   - /wait-shutdown
           args:
             - /nginx-ingress-controller
+            - --publish-service=$(POD_NAMESPACE)/ingress-nginx-controller
             - --election-id=ingress-controller-leader
             - --ingress-class=nginx
             - --configmap=$(POD_NAMESPACE)/ingress-nginx-controller
