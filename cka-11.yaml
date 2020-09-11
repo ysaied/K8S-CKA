@@ -3,71 +3,72 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: in-09
+  name: in-11
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.nginx
+#    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: in9.lab.ae
+  - host: in11.lab.ae
     http:
       paths:
       - path: /tea
         pathType: Prefix
         backend:
           service:
-            name: srv-09-1
+            name: srv-11-1
             port: 
               number: 80
       - path: /coffee
         pathType: Prefix
         backend:
           service:
-            name: srv-09-2
+            name: srv-11-2
             port: 
               number: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: srv-09-1
+  name: srv-11-1
   labels:
 spec:
   type: LoadBalancer
-  clusterIP: 10.96.1.91
+  clusterIP: 10.96.1.111
   ports:
   - port: 80
     targetPort: 80
     protocol: TCP
   selector:
-    app: app-09-1
+    app: app-11-1
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: srv-09-2
+  name: srv-11-2
 spec:
   type: LoadBalancer
-  clusterIP: 10.96.1.92
+  clusterIP: 10.96.1.112
   ports:
   - port: 80
     targetPort: 80
     protocol: TCP
   selector:
-    app: app-09-2
+    app: app-11-2
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-09-1
+  name: dep-11-1
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: app-09-1
+      app: app-11-1
   template:
     metadata:
       labels:
-        app: app-09-1 
+        app: app-11-1 
     spec:
       containers:
       - name: nginx 
@@ -76,16 +77,16 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-09-2
+  name: dep-11-2
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: app-09-2
+      app: app-11-2
   template:
     metadata:
       labels:
-        app: app-09-2
+        app: app-11-2
     spec:
       containers:
       - name: nginx
