@@ -42,7 +42,7 @@ metadata:
   name: map-08-2
 data:
   index.html: |
-    <!DOCTYPE html><html><body><h1>CKA-08-1</h1></body></html>
+    <!DOCTYPE html><html><body><h1>CKA-08-2</h1></body></html>
 
 ---
 apiVersion: v1
@@ -116,3 +116,10 @@ spec:
       containers:
       - name: nginx
         image: nginx
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html/
+      volumes:
+      - name: html
+        configMap:
+          name: map-08-2
