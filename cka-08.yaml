@@ -94,10 +94,10 @@ spec:
         volumeMounts:
         - name: html
           mountPath: /usr/share/nginx/html/
-    volumes:
-    - name: html
-      configMap:
-        name: map-08-1
+      volumes:
+      - name: html
+        configMap:
+          name: map-08-1
 ---
 apiVersion: apps/v1
 kind: Deployment
