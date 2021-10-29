@@ -1,0 +1,30 @@
+# Create Pod + NodePort Service -- use App Label to bind the pod and service
+#service#0
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-iperf-01
+  labels:
+    app: iperf-01
+  annotations: { paloaltonetworks.com/firewall: pan-fw }
+spec:
+  containers:
+  - name: iperf
+    image: ysaied/iperf
+#    ports:
+#    - containerPort: 80
+    command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-nginx-01
+  labels:
+    app: nginx-01
+  annotations: { paloaltonetworks.com/firewall: pan-fw }
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80

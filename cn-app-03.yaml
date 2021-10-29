@@ -1,0 +1,45 @@
+# Create Deployment
+#deployment#6
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-03
+  labels:
+    app: app-03
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-03
+  template:
+    spec:
+      containers:
+      - name: iperf
+        image: ysaied/iperf
+        command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
+        securityContext:
+          privileged: true
+          capabilities:
+            add: ["NET_ADMIN","NET_RAW"]
+            drop: ["all"]
+    metadata:
+      labels:
+        app: app-03
+      annotations: { paloaltonetworks.com/firewall: pan-fw }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srv-03
+  labels:
+    app: app-03
+spec:
+  type: NodePort
+  #clusterIP: 191.1.0.102
+  ports:
+  - protocol: TCP
+    port: 22
+    targetPort: 22
+    nodePort: 30003
+  selector:
+    app: app-03

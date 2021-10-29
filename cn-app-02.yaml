@@ -3,41 +3,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-06
+  name: dep-02
   labels:
-    app: app-06
+    app: app-02
 spec:
-  replicas: 6
+  replicas: 2
   selector:
     matchLabels:
-      app: app-06
+      app: app-02
   template:
     spec:
       containers:
       - name: nginx
         image: nginx
     metadata:
-#      name: pod-06
-# Tested, pod names came from Deployment name above
       labels:
-        app: app-06
+        app: app-02
+      annotations: { paloaltonetworks.com/firewall: pan-fw }
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: srv-06
+  name: srv-02
   labels:
-    app: app-06
+    app: app-02
 spec:
   type: NodePort
-#  clusterIP: 191.1.0.101
-# external ip tested and works fine
-#  externalIPs:
-#  - 192.3.0.6
+  #clusterIP: 191.1.0.102
   ports:
   - protocol: TCP
     port: 80
     targetPort: 80
-    nodePort: 30006
+    nodePort: 30002
   selector:
-    app: app-06
+    app: app-02
